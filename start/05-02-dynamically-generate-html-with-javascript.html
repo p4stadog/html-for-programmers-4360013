@@ -16,7 +16,9 @@
     <p><a href=""></a></p>
     <button></button>
   </div> -->
-  <div class="wrapper"></div>
+  <div class="wrapper">
+
+  </div>
 
   <script>
     const socials = [
@@ -45,6 +47,37 @@
         avatar: '../assets/avatar-4.png'
       }
     ];
+
+    const wrapper = document.querySelector('.wrapper');
+    socials.forEach(user => {
+      let socialWrapper = document.createElement('div');
+      socialWrapper.style = 'border: 1px solid black';
+
+      let avatar = document.createElement('img');
+      avatar.src = user.avatar;
+      avatar.alt = user.name;
+      socialWrapper.appendChild(avatar);
+
+      let name = document.createElement('h3');
+      name.innerText = user.name;
+      socialWrapper.appendChild(name);
+
+      let location = document.createElement('p');
+      location.innerText = user.country;
+
+      let city = document.createElement('a');
+      city.src = '#';
+      city.appendChild(document.createTextNode(`${user.city}, `));
+
+      location.prepend(city);
+      socialWrapper.appendChild(location);
+
+      let addFriendButton = document.createElement('button');
+      addFriendButton.innerText = 'Add Friend';
+      socialWrapper.append(addFriendButton);
+
+      wrapper.appendChild(socialWrapper);
+    })
 
   </script>
 </body>
